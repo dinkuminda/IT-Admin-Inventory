@@ -1,0 +1,5 @@
+{
+  "name": "IT Admin Directorate Inventory mgt system",
+  "description": "A dynamic IT Inventory Management system for tracking hardware assets, software licenses, and maintenance schedules.",
+  "requestFramePermissions": []
+}
