@@ -52,7 +52,11 @@ export function MyAssets() {
             <ShieldCheck size={28} />
           </div>
           <div>
+<<<<<<< HEAD
             <h1 className="text-2xl font-bold">Welcome, {userName || 'User'}</h1>
+=======
+            <h1 className="text-2xl font-bold">Welcome, {userName}</h1>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
             <p className="text-indigo-100">Here are the IT assets currently assigned to you.</p>
           </div>
         </div>

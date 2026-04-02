@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { Shield, UserPlus, Search, Edit2, Trash2, Key, Mail, UserCheck, UserX, ShieldCheck, X } from 'lucide-react';
+=======
+import { Shield, UserPlus, Search, Edit2, Trash2, Key, Mail, UserCheck, UserX, ShieldCheck } from 'lucide-react';
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
 
 interface SystemUser {
   id: string;
@@ -12,6 +16,7 @@ interface SystemUser {
 
 export function UserManagement() {
   const [searchTerm, setSearchTerm] = useState('');
+<<<<<<< HEAD
   const [users, setUsers] = useState<SystemUser[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -102,6 +107,19 @@ export function UserManagement() {
     );
   }
 
+=======
+  const [users, setUsers] = useState<SystemUser[]>([
+    { id: '1', name: 'Admin User', email: 'admin@inventory.com', role: 'Admin', status: 'Active', lastLogin: '2024-03-27 14:30' },
+    { id: '2', name: 'IT Technician', email: 'tech@inventory.com', role: 'IT Staff', status: 'Active', lastLogin: '2024-03-28 09:15' },
+    { id: '3', name: 'Inventory Viewer', email: 'viewer@inventory.com', role: 'Viewer', status: 'Inactive', lastLogin: '2024-03-20 11:45' },
+  ]);
+
+  const filteredUsers = users.filter(user => 
+    user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -109,10 +127,14 @@ export function UserManagement() {
           <h1 className="text-2xl font-bold text-slate-900">User Management</h1>
           <p className="text-slate-500">Manage system access and permissions for IT staff and administrators.</p>
         </div>
+<<<<<<< HEAD
         <button 
           onClick={() => handleOpenModal()}
           className="bg-cyan-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-cyan-700 transition-colors shadow-sm"
         >
+=======
+        <button className="bg-cyan-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-cyan-700 transition-colors shadow-sm">
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
           <UserPlus size={18} />
           <span>Invite User</span>
         </button>
@@ -125,9 +147,13 @@ export function UserManagement() {
           </div>
           <div>
             <p className="text-sm text-slate-500 font-medium">Total Admins</p>
+<<<<<<< HEAD
             <p className="text-2xl font-bold text-slate-900">
               {users.filter(u => u.role === 'Admin').length}
             </p>
+=======
+            <p className="text-2xl font-bold text-slate-900">2</p>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
           </div>
         </div>
         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
@@ -136,9 +162,13 @@ export function UserManagement() {
           </div>
           <div>
             <p className="text-sm text-slate-500 font-medium">Active Users</p>
+<<<<<<< HEAD
             <p className="text-2xl font-bold text-slate-900">
               {users.filter(u => u.status === 'Active').length}
             </p>
+=======
+            <p className="text-2xl font-bold text-slate-900">8</p>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
           </div>
         </div>
         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
@@ -146,10 +176,15 @@ export function UserManagement() {
             <Key size={24} />
           </div>
           <div>
+<<<<<<< HEAD
             <p className="text-sm text-slate-500 font-medium">IT Staff</p>
             <p className="text-2xl font-bold text-slate-900">
               {users.filter(u => u.role === 'IT Staff').length}
             </p>
+=======
+            <p className="text-sm text-slate-500 font-medium">Pending Invites</p>
+            <p className="text-2xl font-bold text-slate-900">3</p>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
           </div>
         </div>
       </div>
@@ -184,10 +219,17 @@ export function UserManagement() {
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold">
+<<<<<<< HEAD
                       {(user.name || 'U').charAt(0)}
                     </div>
                     <div>
                       <p className="text-sm font-bold text-slate-900">{user.name || 'Unknown'}</p>
+=======
+                      {user.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-900">{user.name}</p>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                       <p className="text-xs text-slate-500">{user.email}</p>
                     </div>
                   </div>
@@ -214,6 +256,7 @@ export function UserManagement() {
                 </td>
                 <td className="px-6 py-4 text-right">
                   <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<<<<<<< HEAD
                     <button 
                       onClick={() => handleOpenModal(user)}
                       className="p-1 text-slate-400 hover:text-cyan-600 transition-colors"
@@ -224,6 +267,12 @@ export function UserManagement() {
                       onClick={() => handleDelete(user.id)}
                       className="p-1 text-slate-400 hover:text-rose-600 transition-colors"
                     >
+=======
+                    <button className="p-1 text-slate-400 hover:text-cyan-600 transition-colors">
+                      <Edit2 size={16} />
+                    </button>
+                    <button className="p-1 text-slate-400 hover:text-rose-600 transition-colors">
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                       <Trash2 size={16} />
                     </button>
                   </div>
@@ -233,6 +282,7 @@ export function UserManagement() {
           </tbody>
         </table>
       </div>
+<<<<<<< HEAD
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
@@ -310,6 +360,8 @@ export function UserManagement() {
           </div>
         </div>
       )}
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
     </div>
   );
 }

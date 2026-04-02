@@ -99,9 +99,15 @@ export function MaintenanceList() {
   const filteredLogs = logs.filter(log => {
     const asset = assets.find(a => a.id === log.assetId);
     return (
+<<<<<<< HEAD
       (asset?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
       (log.description || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
       (log.performedBy || '').toLowerCase().includes(searchTerm.toLowerCase())
+=======
+      asset?.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      log.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      log.performedBy.toLowerCase().includes(searchTerm.toLowerCase())
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
     );
   });
 

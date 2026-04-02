@@ -27,9 +27,15 @@ export function SystemAudit() {
 
   const filteredLogs = logs.filter(log => {
     const matchesSearch = 
+<<<<<<< HEAD
       (log.details || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
       (log.userName || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
       (log.entityId || '').toLowerCase().includes(searchTerm.toLowerCase());
+=======
+      log.details.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      log.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      log.entityId.toLowerCase().includes(searchTerm.toLowerCase());
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
     
     const matchesAction = filterAction === 'all' || log.action === filterAction;
     const matchesEntity = filterEntity === 'all' || log.entity === filterEntity;
@@ -149,9 +155,15 @@ export function SystemAudit() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
                         <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+<<<<<<< HEAD
                           {(log.userName || 'U').charAt(0)}
                         </div>
                         <span className="text-sm font-medium text-slate-900">{log.userName || 'Unknown'}</span>
+=======
+                          {log.userName.charAt(0)}
+                        </div>
+                        <span className="text-sm font-medium text-slate-900">{log.userName}</span>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                       </div>
                     </td>
                     <td className="px-6 py-4">

@@ -1,5 +1,12 @@
 {
+<<<<<<< HEAD
   "name": "ICS IT Admin Directorate Inventory mgt system",
   "description": "A dynamic IT Inventory Management system for tracking hardware assets, software licenses, and maintenance schedules.",
   "requestFramePermissions": []
 }
+=======
+  "name": "IT Admin Directorate Inventory mgt system",
+  "description": "A dynamic IT Inventory Management system for tracking hardware assets, software licenses, and maintenance schedules.",
+  "requestFramePermissions": []
+}
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3

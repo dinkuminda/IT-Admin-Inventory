@@ -10,6 +10,7 @@
   }
 }
 
+<<<<<<< HEAD
 @media print {
   body, html {
     height: auto !important;
@@ -50,6 +51,8 @@
   }
 }
 
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
 @layer components {
   .btn-primary {
     @apply bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition-colors shadow-sm;

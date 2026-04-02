@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
 import { Search, Plus, Filter, X, Edit2, Trash2, User, Mail, Phone, Briefcase, Calendar, Building2, Hash, Lock, Key, Download, Package, Monitor } from 'lucide-react';
 import { Employee, Department } from '../types';
@@ -13,15 +14,24 @@ export function EmployeeList() {
     }
   }, [userRole, navigate]);
 
+=======
+import { Search, Plus, Filter, X, Edit2, Trash2, User, Mail, Phone, Briefcase, Calendar, Building2, Hash } from 'lucide-react';
+import { Employee, Department } from '../types';
+
+export function EmployeeList() {
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   const [searchTerm, setSearchTerm] = useState('');
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [departments, setDepartments] = useState<Department[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingEmployee, setEditingEmployee] = useState<Employee | null>(null);
+<<<<<<< HEAD
   const [isAssetsModalOpen, setIsAssetsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
   const [employeeAssets, setEmployeeAssets] = useState<any[]>([]);
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   const [formData, setFormData] = useState<Partial<Employee>>({
     id: '',
     firstName: '',
@@ -32,7 +42,11 @@ export function EmployeeList() {
     role: '',
     joinDate: new Date().toISOString().split('T')[0],
     status: 'Active',
+<<<<<<< HEAD
     password: ''
+=======
+    salary: 0
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   });
 
   const fetchData = async () => {
@@ -41,6 +55,7 @@ export function EmployeeList() {
         fetch('/api/employees'),
         fetch('/api/departments')
       ]);
+<<<<<<< HEAD
       
       const employeesData = await employeesRes.json();
       const departmentsData = await departmentsRes.json();
@@ -60,6 +75,15 @@ export function EmployeeList() {
       } else {
         console.error('Departments data is not an array:', departmentsData);
         setDepartments([]);
+=======
+      const employeesData = await employeesRes.json();
+      const departmentsData = await departmentsRes.json();
+      setEmployees(employeesData);
+      setDepartments(departmentsData);
+      
+      if (departmentsData.length > 0 && !formData.departmentId) {
+        setFormData(prev => ({ ...prev, departmentId: departmentsData[0].id }));
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
       }
     } catch (error) {
       console.error('Failed to fetch employee data:', error);
@@ -79,6 +103,10 @@ export function EmployeeList() {
     } else {
       setEditingEmployee(null);
       setFormData({
+<<<<<<< HEAD
+=======
+        id: `emp${Date.now()}`,
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
         firstName: '',
         lastName: '',
         email: '',
@@ -87,7 +115,11 @@ export function EmployeeList() {
         role: '',
         joinDate: new Date().toISOString().split('T')[0],
         status: 'Active',
+<<<<<<< HEAD
         password: ''
+=======
+        salary: 0
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
       });
     }
     setIsModalOpen(true);
@@ -113,6 +145,7 @@ export function EmployeeList() {
       if (response.ok) {
         fetchData();
         handleCloseModal();
+<<<<<<< HEAD
       } else {
         const errorData = await response.json();
         alert(`Failed to save employee: ${errorData.error || response.statusText}`);
@@ -120,6 +153,11 @@ export function EmployeeList() {
     } catch (error) {
       console.error('Failed to save employee:', error);
       alert('An error occurred while saving the employee.');
+=======
+      }
+    } catch (error) {
+      console.error('Failed to save employee:', error);
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
     }
   };
 
@@ -136,6 +174,7 @@ export function EmployeeList() {
     }
   };
 
+<<<<<<< HEAD
   const handleResetPassword = async (id: string) => {
     if (!confirm('Reset password to default (user000)? The employee will be prompted to change it on next login.')) return;
 
@@ -206,6 +245,13 @@ export function EmployeeList() {
     (emp.email || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (emp.role || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (emp.id || '').toLowerCase().includes(searchTerm.toLowerCase())
+=======
+  const filteredEmployees = employees.filter(emp => 
+    `${emp.firstName} ${emp.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    emp.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    emp.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    emp.id.toLowerCase().includes(searchTerm.toLowerCase())
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   );
 
   if (loading) {
@@ -223,6 +269,7 @@ export function EmployeeList() {
           <h1 className="text-2xl font-bold text-slate-900">Employees</h1>
           <p className="text-slate-500">Manage organization members and asset assignments.</p>
         </div>
+<<<<<<< HEAD
         <div className="flex items-center gap-3">
           <button 
             onClick={handleExportCSV}
@@ -239,6 +286,15 @@ export function EmployeeList() {
             <span>Add Employee</span>
           </button>
         </div>
+=======
+        <button 
+          onClick={() => handleOpenModal()}
+          className="bg-cyan-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-cyan-700 transition-colors shadow-sm"
+        >
+          <Plus size={18} />
+          <span>Add Employee</span>
+        </button>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
       </div>
 
       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4">
@@ -260,6 +316,7 @@ export function EmployeeList() {
           return (
             <div key={emp.id} className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 hover:shadow-md transition-shadow group relative">
               <div className="flex items-start justify-between mb-4">
+<<<<<<< HEAD
                 <div>
                   <h3 className="font-bold text-slate-900">{(emp.firstName || 'Unknown')} {(emp.lastName || '')}</h3>
                   <p className="text-sm text-cyan-600 font-medium">{emp.role}</p>
@@ -295,13 +352,35 @@ export function EmployeeList() {
                     onClick={() => handleOpenModal(emp)}
                     className="p-1.5 text-slate-400 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors"
                     title="Edit Employee"
+=======
+                <div className="flex items-center gap-4">
+                  <img 
+                    src={emp.avatar || `https://i.pravatar.cc/150?u=${emp.id}`} 
+                    alt="" 
+                    className="w-16 h-16 rounded-2xl object-cover border-2 border-slate-100"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div>
+                    <h3 className="font-bold text-slate-900">{emp.firstName} {emp.lastName}</h3>
+                    <p className="text-sm text-cyan-600 font-medium">{emp.role}</p>
+                    <p className="text-[10px] text-slate-400 font-mono mt-0.5">ID: {emp.id}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button 
+                    onClick={() => handleOpenModal(emp)}
+                    className="p-1.5 text-slate-400 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors"
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                   >
                     <Edit2 size={16} />
                   </button>
                   <button 
                     onClick={() => handleDelete(emp.id)}
                     className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-slate-50 rounded-lg transition-colors"
+<<<<<<< HEAD
                     title="Delete Employee"
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                   >
                     <Trash2 size={16} />
                   </button>
@@ -360,11 +439,18 @@ export function EmployeeList() {
                     <input 
                       required
                       type="text" 
+<<<<<<< HEAD
                       className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none font-mono text-sm disabled:opacity-50"
                       value={formData.id || ''}
                       onChange={e => setFormData({...formData, id: e.target.value})}
                       disabled={!!editingEmployee}
                       placeholder="e.g. EMP001"
+=======
+                      className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none font-mono text-sm"
+                      value={formData.id}
+                      onChange={e => setFormData({...formData, id: e.target.value})}
+                      disabled={!!editingEmployee}
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                     />
                   </div>
                 </div>
@@ -440,6 +526,7 @@ export function EmployeeList() {
                     onChange={e => setFormData({...formData, joinDate: e.target.value})}
                   />
                 </div>
+<<<<<<< HEAD
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-slate-700">Status</label>
                   <select 
@@ -468,6 +555,8 @@ export function EmployeeList() {
                     </p>
                   )}
                 </div>
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
               </div>
 
               <div className="flex justify-end gap-3 pt-4 border-t border-slate-100">
@@ -489,6 +578,7 @@ export function EmployeeList() {
           </div>
         </div>
       )}
+<<<<<<< HEAD
       {isAssetsModalOpen && selectedEmployee && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden shadow-2xl flex flex-col">
@@ -544,6 +634,8 @@ export function EmployeeList() {
           </div>
         </div>
       )}
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
     </div>
   );
 }

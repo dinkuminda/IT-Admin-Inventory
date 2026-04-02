@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useRef } from 'react';
 import { Search, Plus, Filter, MoreVertical, X, Edit2, Trash2, Shield, Key, Users, Calendar, Download, Upload } from 'lucide-react';
+=======
+import React, { useEffect, useState } from 'react';
+import { Search, Plus, Filter, MoreVertical, X, Edit2, Trash2, Shield, Key, Users, Calendar } from 'lucide-react';
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
 import { SoftwareLicense, LicenseType } from '../types';
 
 const LICENSE_TYPES: LicenseType[] = ['Subscription', 'Perpetual', 'Open Source'];
@@ -10,7 +15,10 @@ export function LicenseList() {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingLicense, setEditingLicense] = useState<SoftwareLicense | null>(null);
+<<<<<<< HEAD
   const fileInputRef = useRef<HTMLInputElement>(null);
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   const [formData, setFormData] = useState<Partial<SoftwareLicense>>({
     name: '',
     version: '',
@@ -38,6 +46,7 @@ export function LicenseList() {
     fetchData();
   }, []);
 
+<<<<<<< HEAD
   const handleExportCSV = () => {
     if (licenses.length === 0) return;
 
@@ -112,6 +121,8 @@ export function LicenseList() {
     reader.readAsText(file);
   };
 
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   const handleOpenModal = (license?: SoftwareLicense) => {
     if (license) {
       setEditingLicense(license);
@@ -172,9 +183,15 @@ export function LicenseList() {
   };
 
   const filteredLicenses = licenses.filter(license => 
+<<<<<<< HEAD
     (license.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (license.vendor || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (license.key || '').toLowerCase().includes(searchTerm.toLowerCase())
+=======
+    license.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    license.vendor.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    license.key.toLowerCase().includes(searchTerm.toLowerCase())
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   );
 
   if (loading) {
@@ -192,6 +209,7 @@ export function LicenseList() {
           <h1 className="text-2xl font-bold text-slate-900">Software Licenses</h1>
           <p className="text-slate-500">Manage software subscriptions and license keys.</p>
         </div>
+<<<<<<< HEAD
         <div className="flex flex-wrap gap-2">
           <input 
             type="file" 
@@ -222,6 +240,15 @@ export function LicenseList() {
             <span>Add License</span>
           </button>
         </div>
+=======
+        <button 
+          onClick={() => handleOpenModal()}
+          className="bg-cyan-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-cyan-700 transition-colors shadow-sm"
+        >
+          <Plus size={18} />
+          <span>Add License</span>
+        </button>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
       </div>
 
       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4">

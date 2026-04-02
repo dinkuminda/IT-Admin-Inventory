@@ -166,8 +166,13 @@ export function InventoryDashboard() {
           <tbody className="divide-y divide-slate-100">
             {licenses.map((lic) => (
               <tr key={lic.id} className="hover:bg-slate-50 transition-colors">
+<<<<<<< HEAD
                 <td className="px-6 py-4 font-medium text-slate-900">{lic.name || 'Unknown Software'}</td>
                 <td className="px-6 py-4 text-sm text-slate-600">{lic.vendor || 'Unknown Vendor'}</td>
+=======
+                <td className="px-6 py-4 font-medium text-slate-900">{lic.name}</td>
+                <td className="px-6 py-4 text-sm text-slate-600">{lic.vendor}</td>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                 <td className="px-6 py-4 text-sm text-slate-600">
                   <div className="flex items-center gap-2">
                     <div className="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
@@ -179,7 +184,11 @@ export function InventoryDashboard() {
                     <span>{lic.usedSeats}/{lic.seats}</span>
                   </div>
                 </td>
+<<<<<<< HEAD
                 <td className="px-6 py-4 text-sm text-slate-600">{lic.expiryDate || 'No Expiry'}</td>
+=======
+                <td className="px-6 py-4 text-sm text-slate-600">{lic.expiryDate}</td>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                 <td className="px-6 py-4">
                   <span className="px-2 py-1 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold uppercase">
                     Active

@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useRef } from 'react';
 import { Search, Plus, Filter, MoreVertical, Monitor, Smartphone, Server, Wifi, X, Edit2, Trash2, Download, Upload, Printer, QrCode, CheckCircle2 } from 'lucide-react';
 import { Asset, AssetCategory, Employee, AssetStatus } from '../types';
 import { QRCodeSVG } from 'qrcode.react';
+=======
+import React, { useEffect, useState } from 'react';
+import { Search, Plus, Filter, MoreVertical, Monitor, Smartphone, Server, Wifi, X, Edit2, Trash2 } from 'lucide-react';
+import { Asset, AssetCategory, Employee, AssetStatus } from '../types';
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
 
 const categoryIcons: Record<AssetCategory, any> = {
   Laptop: Monitor,
@@ -13,7 +19,11 @@ const categoryIcons: Record<AssetCategory, any> = {
 };
 
 const CATEGORIES: AssetCategory[] = ['Laptop', 'Desktop', 'Monitor', 'Server', 'Network', 'Peripheral'];
+<<<<<<< HEAD
 const STATUSES: AssetStatus[] = ['In Use', 'In Stock', 'Under Repair', 'Retired', 'Pending Approval'];
+=======
+const STATUSES: AssetStatus[] = ['In Use', 'In Stock', 'Under Repair', 'Retired'];
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
 
 export function AssetList() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,27 +31,39 @@ export function AssetList() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+<<<<<<< HEAD
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [selectedAssetForQr, setSelectedAssetForQr] = useState<Asset | null>(null);
   const [editingAsset, setEditingAsset] = useState<Asset | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+=======
+  const [editingAsset, setEditingAsset] = useState<Asset | null>(null);
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   const [formData, setFormData] = useState<Partial<Asset>>({
     name: '',
     serialNumber: '',
     category: 'Laptop',
     model: '',
     manufacturer: '',
+<<<<<<< HEAD
     recordDate: new Date().toISOString().split('T')[0],
     status: 'In Stock',
     assignedTo: localStorage.getItem('userRole') === 'admin' ? undefined : (localStorage.getItem('employeeId') || undefined),
+=======
+    purchaseDate: new Date().toISOString().split('T')[0],
+    status: 'In Stock',
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
     location: '',
     remark: '',
     specifications: {}
   });
 
+<<<<<<< HEAD
   const userRole = localStorage.getItem('userRole') || 'admin';
   const employeeId = localStorage.getItem('employeeId');
 
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   const fetchData = async () => {
     try {
       const [assetsRes, employeesRes] = await Promise.all([
@@ -63,6 +85,7 @@ export function AssetList() {
     fetchData();
   }, []);
 
+<<<<<<< HEAD
   const handleExportCSV = () => {
     if (assets.length === 0) return;
 
@@ -150,6 +173,8 @@ export function AssetList() {
     }, 100);
   };
 
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   const handleOpenModal = (asset?: Asset) => {
     if (asset) {
       setEditingAsset(asset);
@@ -162,9 +187,14 @@ export function AssetList() {
         category: 'Laptop',
         model: '',
         manufacturer: '',
+<<<<<<< HEAD
         recordDate: new Date().toISOString().split('T')[0],
         status: userRole === 'admin' ? 'In Stock' : 'Pending Approval',
         assignedTo: userRole === 'admin' ? undefined : (employeeId || undefined),
+=======
+        purchaseDate: new Date().toISOString().split('T')[0],
+        status: 'In Stock',
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
         location: '',
         remark: '',
         specifications: {}
@@ -199,6 +229,7 @@ export function AssetList() {
     }
   };
 
+<<<<<<< HEAD
   const handleApprove = async (asset: Asset) => {
     try {
       const response = await fetch(`/api/assets/${asset.id}`, {
@@ -223,6 +254,8 @@ export function AssetList() {
     setIsQrModalOpen(true);
   };
 
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this asset?')) return;
 
@@ -237,9 +270,15 @@ export function AssetList() {
   };
 
   const filteredAssets = assets.filter(asset => 
+<<<<<<< HEAD
     (asset.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (asset.serialNumber || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (asset.model || '').toLowerCase().includes(searchTerm.toLowerCase())
+=======
+    asset.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    asset.serialNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    asset.model.toLowerCase().includes(searchTerm.toLowerCase())
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   );
 
   if (loading) {
@@ -257,6 +296,7 @@ export function AssetList() {
           <h1 className="text-2xl font-bold text-slate-900">IT Assets</h1>
           <p className="text-slate-500">Track and manage hardware across the organization.</p>
         </div>
+<<<<<<< HEAD
         <div className="flex flex-wrap gap-2 print:hidden">
           <input 
             type="file" 
@@ -297,6 +337,18 @@ export function AssetList() {
       </div>
 
       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 print:hidden">
+=======
+        <button 
+          onClick={() => handleOpenModal()}
+          className="bg-cyan-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-cyan-700 transition-colors shadow-sm"
+        >
+          <Plus size={18} />
+          <span>Add Asset</span>
+        </button>
+      </div>
+
+      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4">
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
         <div className="flex-1 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
           <input 
@@ -315,7 +367,11 @@ export function AssetList() {
         </div>
       </div>
 
+<<<<<<< HEAD
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden print:shadow-none print:border-none print:overflow-visible">
+=======
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
         <table className="w-full text-left">
           <thead className="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
             <tr>
@@ -326,7 +382,11 @@ export function AssetList() {
               <th className="px-6 py-4 font-medium">Assigned To</th>
               <th className="px-6 py-4 font-medium">Status</th>
               <th className="px-6 py-4 font-medium">Remark</th>
+<<<<<<< HEAD
               <th className="px-6 py-4 font-medium text-right print:hidden">Actions</th>
+=======
+              <th className="px-6 py-4 font-medium text-right">Actions</th>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
@@ -365,6 +425,7 @@ export function AssetList() {
                         <span className="text-sm text-slate-700">{assignee.firstName} {assignee.lastName}</span>
                       </div>
                     ) : (
+<<<<<<< HEAD
                       userRole === 'admin' ? (
                         <span className="text-sm text-slate-400 italic">Unassigned</span>
                       ) : (
@@ -378,6 +439,16 @@ export function AssetList() {
                       asset.status === 'In Stock' ? 'bg-cyan-100 text-cyan-700' : 
                       asset.status === 'Under Repair' ? 'bg-rose-100 text-rose-700' : 
                       asset.status === 'Pending Approval' ? 'bg-amber-100 text-amber-700' :
+=======
+                      <span className="text-sm text-slate-400 italic">Unassigned</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase ${
+                      asset.status === 'In Use' ? 'bg-emerald-100 text-emerald-700' : 
+                      asset.status === 'In Stock' ? 'bg-cyan-100 text-cyan-700' : 
+                      asset.status === 'Under Repair' ? 'bg-rose-100 text-rose-700' : 
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                       'bg-slate-100 text-slate-700'
                     }`}>
                       {asset.status}
@@ -388,6 +459,7 @@ export function AssetList() {
                       {asset.remark || '-'}
                     </span>
                   </td>
+<<<<<<< HEAD
                   <td className="px-6 py-4 text-right print:hidden">
                     <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                       {userRole === 'admin' ? (
@@ -432,6 +504,22 @@ export function AssetList() {
                           <span>View</span>
                         </button>
                       )}
+=======
+                  <td className="px-6 py-4 text-right">
+                    <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button 
+                        onClick={() => handleOpenModal(asset)}
+                        className="p-1 text-slate-400 hover:text-cyan-600 transition-colors"
+                      >
+                        <Edit2 size={16} />
+                      </button>
+                      <button 
+                        onClick={() => handleDelete(asset.id)}
+                        className="p-1 text-slate-400 hover:text-rose-600 transition-colors"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                     </div>
                   </td>
                 </tr>
@@ -504,19 +592,32 @@ export function AssetList() {
                   />
                 </div>
                 <div className="space-y-2">
+<<<<<<< HEAD
                   <label className="text-sm font-semibold text-slate-700">Record Date</label>
                   <input 
                     type="date" 
                     className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none"
                     value={formData.recordDate}
                     onChange={e => setFormData({...formData, recordDate: e.target.value})}
+=======
+                  <label className="text-sm font-semibold text-slate-700">Purchase Date</label>
+                  <input 
+                    type="date" 
+                    className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none"
+                    value={formData.purchaseDate}
+                    onChange={e => setFormData({...formData, purchaseDate: e.target.value})}
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-slate-700">Status</label>
                   <select 
+<<<<<<< HEAD
                     disabled={userRole !== 'admin'}
                     className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+=======
+                    className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none"
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                     value={formData.status}
                     onChange={e => setFormData({...formData, status: e.target.value as AssetStatus})}
                   >
@@ -535,12 +636,20 @@ export function AssetList() {
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-slate-700">Assigned To</label>
                   <select 
+<<<<<<< HEAD
                     disabled={userRole !== 'admin'}
                     className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                     value={formData.assignedTo || ''}
                     onChange={e => setFormData({...formData, assignedTo: e.target.value || undefined})}
                   >
                     <option value="">{userRole === 'admin' ? 'Unassigned' : '-'}</option>
+=======
+                    className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none"
+                    value={formData.assignedTo || ''}
+                    onChange={e => setFormData({...formData, assignedTo: e.target.value || undefined})}
+                  >
+                    <option value="">Unassigned</option>
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
                     {employees.map(emp => (
                       <option key={emp.id} value={emp.id}>
                         {emp.firstName} {emp.lastName}
@@ -579,6 +688,7 @@ export function AssetList() {
           </div>
         </div>
       )}
+<<<<<<< HEAD
       {isQrModalOpen && selectedAssetForQr && (
         <>
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 print-hidden">
@@ -665,6 +775,8 @@ export function AssetList() {
           </div>
         </>
       )}
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
     </div>
   );
 }

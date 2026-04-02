@@ -20,11 +20,19 @@ function ProtectedLayout({ children }: { children: React.ReactNode }) {
   }
 
   return (
+<<<<<<< HEAD
     <div className="flex min-h-screen bg-slate-50 print:block print:bg-white">
       <Sidebar />
       <div className="flex-1 flex flex-col print:block">
         <Header />
         <main className="p-8 flex-1 overflow-y-auto print:p-0 print:overflow-visible print:static">
+=======
+    <div className="flex min-h-screen bg-slate-50">
+      <Sidebar />
+      <div className="flex-1 flex flex-col">
+        <Header />
+        <main className="p-8 flex-1 overflow-y-auto">
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
           {children}
         </main>
       </div>

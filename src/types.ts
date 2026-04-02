@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 export type AssetStatus = 'In Use' | 'In Stock' | 'Under Repair' | 'Retired' | 'Pending Approval';
+=======
+export type AssetStatus = 'In Use' | 'In Stock' | 'Under Repair' | 'Retired';
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
 export type AssetCategory = 'Laptop' | 'Desktop' | 'Monitor' | 'Server' | 'Network' | 'Peripheral';
 
 export interface Employee {
@@ -11,9 +15,14 @@ export interface Employee {
   role: string;
   joinDate: string;
   status: string;
+<<<<<<< HEAD
   department?: string;
   password?: string;
   hasPasswordChanged?: boolean;
+=======
+  salary: number;
+  avatar?: string;
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
 }
 
 export interface Department {
@@ -30,7 +39,11 @@ export interface Asset {
   category: AssetCategory;
   model: string;
   manufacturer: string;
+<<<<<<< HEAD
   recordDate: string;
+=======
+  purchaseDate: string;
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
   status: AssetStatus;
   assignedTo?: string; // Employee ID
   location: string;

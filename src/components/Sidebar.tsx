@@ -26,7 +26,10 @@ const adminNavItems = [
 
 const employeeNavItems = [
   { icon: Monitor, label: 'My Assets', path: '/my-assets' },
+<<<<<<< HEAD
   { icon: Briefcase, label: 'Assets', path: '/assets' },
+=======
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
 ];
 
 export function Sidebar() {
@@ -43,7 +46,11 @@ export function Sidebar() {
   };
 
   return (
+<<<<<<< HEAD
     <aside className="w-64 bg-slate-900 text-white h-screen flex flex-col sticky top-0 print:hidden">
+=======
+    <aside className="w-64 bg-slate-900 text-white h-screen flex flex-col sticky top-0">
+>>>>>>> 7f2aa8d528c2dc9302148656ac679dff44afb6f3
       <div className="p-6 flex items-center gap-3 border-b border-slate-800">
         <div className="w-8 h-8 bg-cyan-600 rounded-lg flex items-center justify-center font-bold text-xl">
           I
